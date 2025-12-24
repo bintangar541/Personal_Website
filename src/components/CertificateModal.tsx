@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, FileText } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useEffect } from 'react';
 
 interface Certificate {
@@ -108,30 +108,6 @@ const CertificateModal = ({ certificate, onClose }: CertificateModalProps) => {
                                 </div>
                             </div>
 
-                            <div className="mt-auto flex flex-wrap gap-4">
-                                {certificate.pdfLink && (
-                                    <a
-                                        href={certificate.pdfLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-5 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-lg transition-all font-medium text-sm"
-                                    >
-                                        <FileText size={18} />
-                                        Lihat PDF
-                                    </a>
-                                )}
-                                {certificate.link && (
-                                    <a
-                                        href={certificate.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-all font-medium text-sm shadow-lg shadow-primary-600/30"
-                                    >
-                                        <ExternalLink size={18} />
-                                        Verifikasi Link
-                                    </a>
-                                )}
-                            </div>
                         </div>
                     </motion.div>
                 </div>
