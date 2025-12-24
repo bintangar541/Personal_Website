@@ -49,41 +49,56 @@ const Contact = () => {
             <div className="glass-card max-w-5xl mx-auto overflow-hidden">
                 <div className="grid md:grid-cols-5">
                     {/* Info Side */}
-                    <div className="md:col-span-2 bg-primary-600 p-8 md:p-12 text-white relative overflow-hidden">
+                    <div className="md:col-span-2 bg-primary-600 p-6 sm:p-8 md:p-12 text-white relative overflow-hidden">
                         <div className="relative z-10">
-                            <h2 className="text-3xl font-bold mb-6">Ayo Berkolaborasi</h2>
-                            <p className="text-primary-100 mb-10">
+                            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Ayo Berkolaborasi</h2>
+                            <p className="text-primary-100 mb-8 sm:mb-10 text-sm sm:text-base leading-relaxed">
                                 Tertarik untuk bekerja sama? Hubungi saya melalui saluran di bawah ini atau kirimkan pesan langsung.
                             </p>
 
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-white/10 rounded-xl">
-                                        <Phone size={20} />
+                            <div className="space-y-5 sm:space-y-6">
+                                <a
+                                    href="https://wa.me/6283877144599"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-3 sm:gap-4 hover:bg-white/5 p-3 rounded-xl transition-colors group"
+                                >
+                                    <div className="p-2.5 sm:p-3 bg-white/10 rounded-xl flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                                        <Phone size={18} className="sm:w-5 sm:h-5" />
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-primary-200">Telepon / WA</p>
-                                        <p className="font-semibold">+62 838-7714-4599</p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-xs text-primary-200 mb-1">Telepon / WA</p>
+                                        <p className="font-semibold text-sm sm:text-base group-hover:underline">+62 838-7714-4599</p>
                                     </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-white/10 rounded-xl">
-                                        <Mail size={20} />
+                                </a>
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ardhianbintang30@gmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-3 sm:gap-4 hover:bg-white/5 p-3 rounded-xl transition-colors group"
+                                >
+                                    <div className="p-2.5 sm:p-3 bg-white/10 rounded-xl flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                                        <Mail size={18} className="sm:w-5 sm:h-5" />
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-primary-200">Email</p>
-                                        <p className="font-semibold">ardhianbintang30@gmail.com</p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-xs text-primary-200 mb-1">Email</p>
+                                        <p className="font-semibold text-sm sm:text-base break-all group-hover:underline">ardhianbintang30@gmail.com</p>
                                     </div>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-white/10 rounded-xl">
-                                        <Linkedin size={20} />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/bintang-ardhian-pratama"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-3 sm:gap-4 hover:bg-white/5 p-3 rounded-xl transition-colors group"
+                                >
+                                    <div className="p-2.5 sm:p-3 bg-white/10 rounded-xl flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                                        <Linkedin size={18} className="sm:w-5 sm:h-5" />
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-primary-200">LinkedIn</p>
-                                        <p className="font-semibold">bintang-ardhian-pratama</p>
+                                    <div className="min-w-0 flex-1">
+                                        <p className="text-xs text-primary-200 mb-1">LinkedIn</p>
+                                        <p className="font-semibold text-sm sm:text-base break-words group-hover:underline">bintang-ardhian-pratama</p>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
