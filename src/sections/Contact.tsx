@@ -75,14 +75,14 @@ const Contact = () => {
                                     href="https://mail.google.com/mail/?view=cm&fs=1&to=ardhianbintang30@gmail.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-start gap-3 sm:gap-4 hover:bg-white/5 p-3 rounded-xl transition-colors group"
+                                    className="flex items-start gap-3 sm:gap-4 hover:bg-white/5 p-2 sm:p-3 rounded-xl transition-colors group"
                                 >
                                     <div className="p-2.5 sm:p-3 bg-white/10 rounded-xl flex-shrink-0 group-hover:bg-white/20 transition-colors">
                                         <Mail size={18} className="sm:w-5 sm:h-5" />
                                     </div>
                                     <div className="min-w-0 flex-1">
                                         <p className="text-xs text-primary-200 mb-1">Email</p>
-                                        <p className="font-semibold text-sm sm:text-base break-all group-hover:underline">ardhianbintang30@gmail.com</p>
+                                        <p className="font-semibold text-xs sm:text-sm leading-relaxed group-hover:underline break-words">ardhianbintang30@gmail.com</p>
                                     </div>
                                 </a>
                                 <a
