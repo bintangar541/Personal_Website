@@ -14,6 +14,7 @@ import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import { AnimatePresence } from 'framer-motion';
 import { Github, Instagram } from 'lucide-react';
+import SEO from './components/SEO';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,13 @@ function App() {
           <LoadingScreen onLoadingComplete={handleLoadingComplete} />
         )}
       </AnimatePresence>
+
+      <SEO
+        title="Bintang Ardhian Pratama - Portfolio"
+        description="Portfolio of Bintang Ardhian Pratama, a passionate developer."
+        name="Bintang Ardhian Pratama"
+        type="website"
+      />
 
       <div className="min-h-screen bg-white dark:bg-dark-bg text-gray-900 dark:text-gray-100 selection:bg-primary-500/30">
         <ParticleBackground />
