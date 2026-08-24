@@ -56,7 +56,7 @@ const Hero = () => {
                     transition={{ delay: 0.4 }}
                     className="max-w-2xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed"
                 >
-                    {isEnglish ? 'Junior Fullstack Developer | ' : 'Junior Fullstack Developer | '}<span className="text-gray-900 dark:text-white">Laravel</span>, <span className="text-gray-900 dark:text-white">ASP.NET</span> & <span className="text-gray-900 dark:text-white">RESTful API</span>
+                    <span className="text-gray-900 dark:text-white">Fullstack Web Developer</span> | <span className="text-gray-900 dark:text-white">Laravel</span>, <span className="text-gray-900 dark:text-white">ASP.NET</span>, <span className="text-gray-900 dark:text-white">React</span> & <span className="text-gray-900 dark:text-white">RESTful API</span>
                 </motion.p>
 
                 <motion.div
