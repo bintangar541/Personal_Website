@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const experiences = [
     {
@@ -9,6 +10,10 @@ const experiences = [
         description: [
             "Mengembangkan aplikasi kasir dengan manajemen transaksi yang efisien",
             "Membangun aplikasi Moi Beauty Clinic untuk penjadwalan janji temu dan manajemen pelanggan"
+        ],
+        descriptionEn: [
+            "Developed a cashier application with efficient transaction management",
+            "Built the Moi Beauty Clinic application for appointment scheduling and customer management"
         ]
     },
     {
@@ -20,14 +25,22 @@ const experiences = [
             "Membangun sistem check-in berbasis website dengan barcode",
             "Berkontribusi dalam pengembangan WikaGPT",
             "Mengembangkan fitur Knowledge Management: CRUD, Export Excel, Autocomplete, On-change interaction"
+        ],
+        descriptionEn: [
+            "Developed camera dashboard features with CRUD and data search functionality",
+            "Built a website-based check-in system using barcodes",
+            "Contributed to the development of WikaGPT",
+            "Developed Knowledge Management features: CRUD, Excel export, autocomplete, and on-change interactions"
         ]
     }
 ];
 
 const Experience = () => {
+    const { language } = useLanguage();
+    const isEnglish = language === 'en';
     return (
         <section id="experience" className="section-padding">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Pengalaman Kerja</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{isEnglish ? 'Work Experience' : 'Pengalaman Kerja'}</h2>
 
             <div className="relative max-w-4xl mx-auto">
                 {/* Timeline Line */}
@@ -55,7 +68,7 @@ const Experience = () => {
                                     <h3 className="text-xl font-bold mb-1">{exp.role}</h3>
                                     <h4 className="text-gray-400 font-medium mb-4">{exp.company}</h4>
                                     <ul className="space-y-2">
-                                        {exp.description.map((item, i) => (
+                                        {(isEnglish ? exp.descriptionEn : exp.description).map((item, i) => (
                                             <li key={i} className="text-gray-400 text-sm flex gap-2">
                                                 <span className="text-primary-500">•</span>
                                                 {item}

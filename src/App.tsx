@@ -15,6 +15,7 @@ import Contact from './sections/Contact';
 import { AnimatePresence } from 'framer-motion';
 import { Github, Instagram } from 'lucide-react';
 import SEO from './components/SEO';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,8 +37,9 @@ function App() {
     setIsLoading(false);
   };
 
-  return (
-    <ThemeProvider>
+    return (
+    <LanguageProvider>
+      <ThemeProvider>
       <AnimatePresence>
         {showLoading && isLoading && (
           <LoadingScreen onLoadingComplete={handleLoadingComplete} />
@@ -92,7 +94,8 @@ function App() {
 
         <BackToTop />
       </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

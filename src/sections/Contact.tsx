@@ -2,8 +2,11 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Linkedin, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
+    const { language } = useLanguage();
+    const isEnglish = language === 'en';
     const formRef = useRef<HTMLFormElement>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -22,7 +25,7 @@ const Contact = () => {
 
         if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
             setStatus('error');
-            setErrorMessage('Konfigurasi EmailJS belum lengkap. Hubungi developer.');
+            setErrorMessage(isEnglish ? 'EmailJS configuration is incomplete. Please contact the developer.' : 'Konfigurasi EmailJS belum lengkap. Hubungi developer.');
             setIsLoading(false);
             return;
         }
@@ -51,9 +54,9 @@ const Contact = () => {
                     {/* Info Side */}
                     <div className="md:col-span-2 bg-primary-600 p-6 sm:p-8 md:p-12 text-white relative overflow-hidden">
                         <div className="relative z-10">
-                            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Ayo Berkolaborasi</h2>
+                            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">{isEnglish ? 'Let’s Collaborate' : 'Ayo Berkolaborasi'}</h2>
                             <p className="text-primary-100 mb-8 sm:mb-10 text-sm sm:text-base leading-relaxed">
-                                Tertarik untuk bekerja sama? Hubungi saya melalui saluran di bawah ini atau kirimkan pesan langsung.
+                                {isEnglish ? 'Interested in working together? Contact me through one of the channels below or send a direct message.' : 'Tertarik untuk bekerja sama? Hubungi saya melalui saluran di bawah ini atau kirimkan pesan langsung.'}
                             </p>
 
                             <div className="space-y-5 sm:space-y-6">
@@ -67,7 +70,7 @@ const Contact = () => {
                                         <Phone size={18} className="sm:w-5 sm:h-5" />
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <p className="text-xs text-primary-200 mb-1">Telepon / WA</p>
+                                        <p className="text-xs text-primary-200 mb-1">{isEnglish ? 'Phone / WhatsApp' : 'Telepon / WA'}</p>
                                         <p className="font-semibold text-sm sm:text-base group-hover:underline">+62 838-7714-4599</p>
                                     </div>
                                 </a>
@@ -111,7 +114,7 @@ const Contact = () => {
                         <form ref={formRef} className="space-y-6" onSubmit={sendEmail}>
                             <div className="grid sm:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-2">Nama Lengkap</label>
+                                    <label className="block text-sm font-medium text-gray-400 mb-2">{isEnglish ? 'Full Name' : 'Nama Lengkap'}</label>
                                     <input
                                         type="text"
                                         name="user_name"
@@ -132,7 +135,7 @@ const Contact = () => {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-400 mb-2">Subjek</label>
+                                    <label className="block text-sm font-medium text-gray-400 mb-2">{isEnglish ? 'Subject' : 'Subjek'}</label>
                                 <input
                                     type="text"
                                     name="subject"
@@ -142,7 +145,7 @@ const Contact = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-400 mb-2">Pesan</label>
+                                <label className="block text-sm font-medium text-gray-400 mb-2">{isEnglish ? 'Message' : 'Pesan'}</label>
                                 <textarea
                                     name="message"
                                     rows={4}
@@ -159,7 +162,7 @@ const Contact = () => {
                                     className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center gap-3 text-green-500 text-sm font-medium"
                                 >
                                     <CheckCircle size={18} />
-                                    Pesan berhasil dikirim! Saya akan segera membalasnya.
+                                    {isEnglish ? 'Message sent successfully! I will reply soon.' : 'Pesan berhasil dikirim! Saya akan segera membalasnya.'}
                                 </motion.div>
                             )}
 
@@ -181,11 +184,11 @@ const Contact = () => {
                             >
                                 {isLoading ? (
                                     <>
-                                        <Loader2 size={18} className="animate-spin" /> Mengirim...
+                                        <Loader2 size={18} className="animate-spin" /> {isEnglish ? 'Sending...' : 'Mengirim...'}
                                     </>
                                 ) : (
                                     <>
-                                        Kirim Pesan <Send size={18} />
+                                        {isEnglish ? 'Send Message' : 'Kirim Pesan'} <Send size={18} />
                                     </>
                                 )}
                             </motion.button>

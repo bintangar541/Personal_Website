@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const NavBar = () => {
     const { theme, toggleTheme } = useTheme();
+    const { language, toggleLanguage } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,13 +19,13 @@ const NavBar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Tentang', href: '#about' },
-        { name: 'Pengalaman', href: '#experience' },
-        { name: 'Pendidikan', href: '#education' },
-        { name: 'Keahlian', href: '#skills' },
-        { name: 'Proyek', href: '#projects' },
-        { name: 'Sertifikat', href: '#certificates' },
-        { name: 'Kontak', href: '#contact' },
+        { name: language === 'id' ? 'Tentang' : 'About', href: '#about' },
+        { name: language === 'id' ? 'Pengalaman' : 'Experience', href: '#experience' },
+        { name: language === 'id' ? 'Pendidikan' : 'Education', href: '#education' },
+        { name: language === 'id' ? 'Keahlian' : 'Skills', href: '#skills' },
+        { name: language === 'id' ? 'Proyek' : 'Projects', href: '#projects' },
+        { name: language === 'id' ? 'Sertifikat' : 'Certificates', href: '#certificates' },
+        { name: language === 'id' ? 'Kontak' : 'Contact', href: '#contact' },
     ];
 
     return (
@@ -52,6 +54,13 @@ const NavBar = () => {
                         </motion.a>
                     ))}
                     <button
+                        onClick={toggleLanguage}
+                        className="px-3 py-2 rounded-full glass hover:bg-primary-500/20 transition-all text-xs font-bold"
+                        aria-label="Change language"
+                    >
+                        {language === 'id' ? 'EN' : 'ID'}
+                    </button>
+                    <button
                         onClick={toggleTheme}
                         className="p-2 rounded-full glass hover:bg-primary-500/20 transition-all"
                     >
@@ -61,6 +70,13 @@ const NavBar = () => {
 
                 {/* Mobile Toggle */}
                 <div className="md:hidden flex items-center gap-4">
+                    <button
+                        onClick={toggleLanguage}
+                        className="px-3 py-2 rounded-full glass text-xs font-bold"
+                        aria-label="Change language"
+                    >
+                        {language === 'id' ? 'EN' : 'ID'}
+                    </button>
                     <button
                         onClick={toggleTheme}
                         className="p-2 rounded-full glass"

@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const projects = [
     {
         title: "Web Quiz Pembelajaran",
         description: "Aplikasi web quiz berbasis React.js yang digunakan untuk latihan dan persiapan UTS di kampus, dilengkapi dengan sistem soal interaktif dan penilaian otomatis.",
+        descriptionEn: "A React.js-based web quiz application for university practice and midterm preparation, featuring interactive questions and automatic scoring.",
         tech: ["React.js", "JavaScript", "CSS"],
         link: "https://web-quiz-two.vercel.app/",
         github: "https://github.com/bintangar541/web_quiz.git",
@@ -13,6 +15,7 @@ const projects = [
     {
         title: "Kasir App",
         description: "Kasir App adalah sistem kasir berbasis Laravel untuk mengelola transaksi penjualan, produk, pengguna, dan laporan. Sistem ini memiliki dua peran: Admin dengan akses penuh ke manajemen data dan laporan, serta Employee dengan akses terbatas untuk melihat produk dan melakukan transaksi.",
+        descriptionEn: "A Laravel-based cashier system for managing sales transactions, products, users, and reports. It includes Admin and Employee roles with different access levels.",
         tech: ["Laravel", "PHP", "PostgreSQL"],
         link: "#",
         github: "https://github.com/bintangar541/kasir_app.git",
@@ -21,6 +24,7 @@ const projects = [
     {
         title: "BintangKu - Modern Game Top-Up Platform",
         description: "BintangKu adalah platform top-up game digital yang dirancang untuk portofolio teknis, mendemonstrasikan integrasi antara Backend Laravel dan Frontend React dengan arsitektur yang terpisah (Decoupled)..",
+        descriptionEn: "BintangKu is a digital game top-up platform designed as a technical portfolio project, demonstrating integration between a Laravel backend and React frontend with a decoupled architecture.",
         tech: ["Laravel", "React 19 + Vite", "Tailwind CSS 4", "PostgreSQL"],
         link: "#",
         github: "https://github.com/bintangar541/BintangKu.git",
@@ -29,10 +33,12 @@ const projects = [
 ];
 
 const Projects = () => {
+    const { language } = useLanguage();
+    const isEnglish = language === 'en';
     return (
         <section id="projects" className="section-padding">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Proyek Unggulan</h2>
-            <p className="text-gray-400 text-center mb-12">Beberapa proyek yang pernah saya kerjakan baru-baru ini.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">{isEnglish ? 'Featured Projects' : 'Proyek Unggulan'}</h2>
+            <p className="text-gray-400 text-center mb-12">{isEnglish ? 'Some of the projects I have worked on recently.' : 'Beberapa proyek yang pernah saya kerjakan baru-baru ini.'}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (
@@ -61,7 +67,7 @@ const Projects = () => {
                         </div>
 
                         <h3 className="text-xl font-bold mb-2 group-hover:text-primary-500 transition-colors">{project.title}</h3>
-                        <p className="text-gray-400 text-sm mb-6 flex-grow">{project.description}</p>
+                        <p className="text-gray-400 text-sm mb-6 flex-grow">{isEnglish ? project.descriptionEn : project.description}</p>
 
                         <div className="flex flex-wrap gap-2">
                             {project.tech.map((t, i) => (

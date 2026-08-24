@@ -9,6 +9,7 @@ import {
     SiPostman, SiPostgresql, SiMysql
 } from 'react-icons/si';
 import { DiMsqlServer } from "react-icons/di";
+import { useLanguage } from '../context/LanguageContext';
 
 const skills = {
     hard: [
@@ -34,15 +35,17 @@ const skills = {
 };
 
 const Skills = () => {
+    const { language } = useLanguage();
+    const isEnglish = language === 'en';
     return (
         <section id="skills" className="section-padding">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gradient">Keahlian</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gradient">{isEnglish ? 'Skills' : 'Keahlian'}</h2>
 
             <div className="grid lg:grid-cols-3 gap-12">
                 {/* Hard Skills */}
                 <div className="lg:col-span-2">
                     <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
-                        <Code2 className="text-primary-500" /> Technology Stack
+                        <Code2 className="text-primary-500" /> {isEnglish ? 'Technology Stack' : 'Technology Stack'}
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {skills.hard.map((skill, index) => (
@@ -68,7 +71,7 @@ const Skills = () => {
                 {/* Soft Skills */}
                 <div>
                     <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
-                        <Users className="text-purple-500" /> Soft Skills
+                        <Users className="text-purple-500" /> {isEnglish ? 'Soft Skills' : 'Soft Skills'}
                     </h3>
                     <div className="space-y-4">
                         {skills.soft.map((skill, index) => (
@@ -83,7 +86,12 @@ const Skills = () => {
                                 <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 group-hover:rotate-12 transition-transform">
                                     {skill.icon}
                                 </div>
-                                <span className="font-medium">{skill.name}</span>
+                                <span className="font-medium">{isEnglish ? {
+                                    'Kolaborasi Tim': 'Team Collaboration',
+                                    'Kepemimpinan': 'Leadership',
+                                    'Berpikir Kreatif': 'Creative Thinking',
+                                    'Pemecahan Masalah': 'Problem Solving'
+                                }[skill.name] : skill.name}</span>
                             </motion.div>
                         ))}
                     </div>

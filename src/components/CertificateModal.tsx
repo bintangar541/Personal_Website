@@ -1,12 +1,15 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface Certificate {
     title: string;
+    titleEn?: string;
     issuer: string;
     date: string;
     description: string;
+    descriptionEn?: string;
     image: string;
     link?: string;
     pdfLink?: string;
@@ -19,6 +22,7 @@ interface CertificateModalProps {
 }
 
 const CertificateModal = ({ certificate, onClose }: CertificateModalProps) => {
+    const { language } = useLanguage();
     // Prevent body scroll when modal is open
     useEffect(() => {
         if (certificate) {
@@ -76,7 +80,7 @@ const CertificateModal = ({ certificate, onClose }: CertificateModalProps) => {
                         <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col overflow-y-auto">
                             <div className="mb-6">
                                 <h3 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-                                    {certificate.title}
+                                    {language === 'en' && certificate.titleEn ? certificate.titleEn : certificate.title}
                                 </h3>
                                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
                                     <span className="font-medium text-primary-600 dark:text-primary-400">
@@ -88,14 +92,14 @@ const CertificateModal = ({ certificate, onClose }: CertificateModalProps) => {
                             </div>
 
                             <div className="mb-6 prose prose-sm dark:prose-invert">
-                                <h4 className="text-sm uppercase tracking-wider text-gray-400 font-semibold mb-2">Deskripsi</h4>
+                                <h4 className="text-sm uppercase tracking-wider text-gray-400 font-semibold mb-2">{language === 'en' ? 'Description' : 'Deskripsi'}</h4>
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                    {certificate.description}
+                                    {language === 'en' && certificate.descriptionEn ? certificate.descriptionEn : certificate.description}
                                 </p>
                             </div>
 
                             <div className="mb-8">
-                                <h4 className="text-sm uppercase tracking-wider text-gray-400 font-semibold mb-3">Skills Verified</h4>
+                                <h4 className="text-sm uppercase tracking-wider text-gray-400 font-semibold mb-3">{language === 'en' ? 'Verified Skills' : 'Skills Verified'}</h4>
                                 <div className="flex flex-wrap gap-2">
                                     {certificate.skills.map((skill, index) => (
                                         <span

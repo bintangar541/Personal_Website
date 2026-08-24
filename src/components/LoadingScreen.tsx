@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
     const [progress, setProgress] = useState(0);
+    const { language } = useLanguage();
 
     useEffect(() => {
         // Simulate loading progress
@@ -37,7 +39,7 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
                     <h1 className="text-5xl md:text-7xl font-bold text-gradient mb-2">
                         Bintang Ardhian
                     </h1>
-                    <p className="text-primary-300 text-lg md:text-xl">Backend Developer</p>
+                    <p className="text-primary-300 text-lg md:text-xl">{language === 'en' ? 'Junior Fullstack Developer' : 'Junior Fullstack Developer'}</p>
                 </motion.div>
 
                 {/* Progress Bar */}

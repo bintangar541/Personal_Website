@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { ChevronRight, FileDown } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero = () => {
+    const { language } = useLanguage();
+    const isEnglish = language === 'en';
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
             {/* Background blobs */}
@@ -44,7 +47,7 @@ const Hero = () => {
                     transition={{ delay: 0.3 }}
                     className="text-xl md:text-2xl text-primary-400 font-medium mb-6"
                 >
-                    Backend Developer
+                    {isEnglish ? 'Junior Fullstack Developer' : 'Junior Fullstack Developer'}
                 </motion.h2>
 
                 <motion.p
@@ -53,7 +56,7 @@ const Hero = () => {
                     transition={{ delay: 0.4 }}
                     className="max-w-2xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed"
                 >
-                    Backend Developer | <span className="text-gray-900 dark:text-white">Laravel</span>, <span className="text-gray-900 dark:text-white">ASP.NET</span> & <span className="text-gray-900 dark:text-white">RESTful API</span>
+                    {isEnglish ? 'Junior Fullstack Developer | ' : 'Junior Fullstack Developer | '}<span className="text-gray-900 dark:text-white">Laravel</span>, <span className="text-gray-900 dark:text-white">ASP.NET</span> & <span className="text-gray-900 dark:text-white">RESTful API</span>
                 </motion.p>
 
                 <motion.div
@@ -66,14 +69,14 @@ const Hero = () => {
                         href="#contact"
                         className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-full font-semibold transition-all flex items-center gap-2 group"
                     >
-                        Hubungi Saya <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        {isEnglish ? 'Contact Me' : 'Hubungi Saya'} <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </a>
                     <a
-                        href="/CV_Bintang Ardhian Pratama.pdf"
-                        download="CV_Bintang Ardhian Pratama.pdf"
+                        href="/CV_Bintang_Ardhian_Pratama (2).pdf"
+                        download="CV_Bintang_Ardhian_Pratama (2).pdf"
                         className="px-8 py-3 glass hover:bg-white/10 rounded-full font-semibold transition-all flex items-center gap-2"
                     >
-                        Unduh CV <FileDown size={18} />
+                        {isEnglish ? 'Download Resume' : 'Unduh CV'} <FileDown size={18} />
                     </a>
                 </motion.div>
             </div>
