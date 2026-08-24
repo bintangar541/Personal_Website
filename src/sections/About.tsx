@@ -22,10 +22,6 @@ const About = () => {
                         />
 
                     </div>
-                    <div className="absolute -bottom-6 -right-6 glass-card p-4 hidden sm:block">
-                        <span className="text-3xl font-bold text-primary-500">2+</span>
-                        <p className="text-xs text-gray-600 dark:text-gray-400 font-medium">Tahun Pengalaman</p>
-                    </div>
                 </motion.div>
 
                 <motion.div
